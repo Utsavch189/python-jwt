@@ -2,12 +2,12 @@ from abc import ABC,abstractmethod
 from dataclasses import dataclass,field
 from datetime import datetime,timedelta
 
-def access_token(exp:int)->dict:
+def access_token_times(exp:int)->dict:
     a={"iat":datetime.timestamp(datetime.now())}
     b={"exp":datetime.timestamp(datetime.now()+timedelta(minutes=exp))}
     return {**a,**b}
 
-def refresh_token(exp:int)->dict:
+def refresh_token_times(exp:int)->dict:
     a={"iat":datetime.timestamp(datetime.now())}
     b={"exp":datetime.timestamp(datetime.now()+timedelta(minutes=exp))}
     return {**a,**b}
@@ -36,8 +36,8 @@ class JwtCustomAttr(JwtOwnAttr):
     refresh_token_dict:dict=field(default_factory=dict,init=False)
 
     def __post_init__(self):
-        self.access_token_exp_iat=access_token(self.access_token_exp)
-        self.refresh_token_exp_iat=refresh_token(self.refresh_token_exp)
+        self.access_token_exp_iat=access_token_times(self.access_token_exp)
+        self.refresh_token_exp_iat=refresh_token_times(self.refresh_token_exp)
 
         self.access_token_dict={**self.access_token_exp_iat,**self.payload}
         self.refresh_token_dict={**self.refresh_token_exp_iat,**self.payload}
