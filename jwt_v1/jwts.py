@@ -28,7 +28,3 @@ class JWT_Builder:
         }
         return data
     
-a=JWT_Builder(payload={
-    "name":"utsav"
-})
-print(a.get_token())
