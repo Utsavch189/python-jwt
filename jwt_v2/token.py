@@ -5,7 +5,7 @@ class JwtBuilder(JwtABC):
 
     def __init__(self,payload:dict):
         self.payload=payload
-        self.attr=JwtCustomAttr(payload=self.payload)
+        self.attr=JwtCustomAttr(payload=self.payload,access_token_exp=13,refresh_token_exp=17)
     
     
     def get_token(self)->dict:
