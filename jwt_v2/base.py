@@ -13,12 +13,10 @@ def refresh_token_times(exp:int)->dict:
     return {**a,**b}
 
 class JwtABC(ABC):
-
     @abstractmethod
     def get_token(self)->dict:pass
 
-    @abstractmethod
-    def decode(self)->dict:pass
+
 
 
 @dataclass(init=False)
