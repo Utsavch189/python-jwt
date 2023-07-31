@@ -12,9 +12,13 @@ def refresh_token_times(exp:int)->dict:
     b={"exp":datetime.timestamp(datetime.now()+timedelta(minutes=exp))}
     return {**a,**b}
 
-class JwtABC:
+class JwtABC(ABC):
+
     @abstractmethod
     def get_token(self)->dict:pass
+
+    @abstractmethod
+    def decode(self)->dict:pass
 
 
 @dataclass(init=False)
