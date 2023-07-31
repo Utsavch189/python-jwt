@@ -16,7 +16,8 @@ class JwtABC(ABC):
     @abstractmethod
     def get_token(self)->dict:pass
 
-
+    @abstractmethod
+    def decode(self)->dict:pass
 
 
 @dataclass(init=False)
